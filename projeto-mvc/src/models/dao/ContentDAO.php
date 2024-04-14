@@ -2,9 +2,9 @@
 
 namespace Php\Projetomvc\Models\DAO;
 
-use Php\Projetomvc\Models\Domain\Subject;
+use Php\Projetomvc\Models\Domain\Content;
 
-class SubjectDAO{
+class ContentDAO{
     private Conexao $conexao;
 
     public function __construct(){
@@ -12,7 +12,7 @@ class SubjectDAO{
     }
 
     public function getAll(){
-        $sql = "SELECT * from subject";
+        $sql = "SELECT * from content";
         $p = $this->conexao->getConexao()->prepare($sql);
         $p->execute();
         return $p->fetchAll();
@@ -20,7 +20,7 @@ class SubjectDAO{
 
     public function getById($id){
         try{
-            $sql = "SELECT * from subject WHERE idsubject = :id";
+            $sql = "SELECT * from content WHERE idcontent = :id";
             $p = $this->conexao->getConexao()->prepare($sql);
             $p->bindValue(":id", $id);
             $p->execute();
@@ -30,14 +30,13 @@ class SubjectDAO{
         }
     }
 
-    public function insert(Subject $subject){
+    public function insert(Content $content){
         try{
-            $sql = "INSERT INTO subject (idsubject, name, datep1, datep2) VALUES (:idsubject, :name, :datep1, :datep2)";
+            $sql = "INSERT INTO content (subject_idsubject, name, weight) VALUES (:subject_idsubject, :name, :weight)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idsubject", $subject->getId());
-            $p->bindValue(":name", $subject->getName());
-            $p->bindValue(":datep1", $subject->getDatep1());
-            $p->bindValue(":datep2", $subject->getDatep2());
+            $p->bindValue(":subject_idsubject", $content->getSubject()->getId());
+            $p->bindValue(":name", $content->getName());
+            $p->bindValue(":weight", $content->getWeight());
             return $p->execute();
         } catch(\Exception $e){
             return 0;

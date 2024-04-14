@@ -11,6 +11,10 @@ $r->get('/subject/insert' , 'Php\Projetomvc\Controllers\SubjectController@insert
 
 $r->post('/subject/new', 'Php\Projetomvc\Controllers\SubjectController@new');
 
+$r->get('/content/insert', 'Php\Projetomvc\Controllers\ContentController@insert');
+
+$r->post('/content/new', 'Php\Projetomvc\Controllers\ContentController@new');
+
 $resultado = $r->handler();
 
 if(!$resultado){
