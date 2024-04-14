@@ -17,7 +17,7 @@ class ContentController{
     public function new($params){
         $subjectDAO = new SubjectDAO();
         $subject = $subjectDAO->getById($_POST['id_subject']);
-        $content = new Content(0, new subject(0, $subject['name'], 
+        $content = new Content(0, new subject($subject['idsubject'], $subject['name'], 
                     $subject['datep1'], 
                     $subject['datep2']), 
                     $_POST['name'], $_POST['weight']);

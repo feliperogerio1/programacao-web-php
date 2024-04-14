@@ -2,9 +2,9 @@
 
 namespace Php\Projetomvc\Models\DAO;
 
-use Php\Projetomvc\Models\Domain\Content;
+use Php\Projetomvc\Models\Domain\Session;
 
-class ContentDAO{
+class SessionDAO{
     private Conexao $conexao;
 
     public function __construct(){
@@ -12,7 +12,7 @@ class ContentDAO{
     }
 
     public function getAll(){
-        $sql = "SELECT * from content";
+        $sql = "SELECT * from session";
         $p = $this->conexao->getConexao()->prepare($sql);
         $p->execute();
         return $p->fetchAll();
@@ -20,7 +20,7 @@ class ContentDAO{
 
     public function getById($id){
         try{
-            $sql = "SELECT * from content WHERE idcontent = :id";
+            $sql = "SELECT * from session WHERE idsession = :id";
             $p = $this->conexao->getConexao()->prepare($sql);
             $p->bindValue(":id", $id);
             $p->execute();
@@ -30,18 +30,18 @@ class ContentDAO{
         }
     }
 
-    public function insert(Content $content){
+    public function insert(Session $session){
         try{
-            $sql = "INSERT INTO content (idcontent, subject_idsubject, name, weight) 
-                VALUES (:idcontent, :subject_idsubject, :name, :weight)";
+            $sql = "INSERT INTO session (idsession, content_idcontent, subject_idsubject, date) 
+                VALUES (:idsession, :content_idcontent, :subject_idsubject, :date)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idcontent", $content->getId());
-            $p->bindValue(":subject_idsubject", $content->getSubject()->getId());
-            $p->bindValue(":name", $content->getName());
-            $p->bindValue(":weight", $content->getWeight());
+            $p->bindValue(":idsession", $session->getId());
+            $p->bindValue(":content_idcontent", $session->getContent()->getId());
+            $p->bindValue(":subject_idsubject", $session->getSubject()->getId());
+            $p->bindValue(":date", $session->getDate());
             return $p->execute();
         } catch(\Exception $e){
-            return 0;
+            return $e->getMessage();
         }
     }
 }
