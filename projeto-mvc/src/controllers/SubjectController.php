@@ -11,7 +11,7 @@ class SubjectController{
     }
 
     public function new($params){
-        $subject = new Subject($_POST['name'], $_POST['datep1'], $_POST['datep2']);
+        $subject = new Subject(0, $_POST['name'], $_POST['datep1'], $_POST['datep2']);
         $subjectDAO = new SubjectDAO();
         if($subjectDAO->insert($subject)){
             return "Inserido com sucesso!";
