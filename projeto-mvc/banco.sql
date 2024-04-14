@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tool` (
   `idtool` INT NOT NULL,
   `subject_idsubject` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`idtool`),
   CONSTRAINT `fk_tool_subject1`
     FOREIGN KEY (`subject_idsubject`)

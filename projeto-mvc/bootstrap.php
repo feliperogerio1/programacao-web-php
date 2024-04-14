@@ -19,6 +19,10 @@ $r->get('/session/insert', 'Php\Projetomvc\Controllers\SessionController@insert'
 
 $r->post('/session/new', 'Php\Projetomvc\Controllers\SessionController@new');
 
+$r->get('/tool/insert', 'Php\Projetomvc\Controllers\ToolController@insert');
+
+$r->post('/tool/new' , 'Php\Projetomvc\Controllers\ToolController@new');
+
 $resultado = $r->handler();
 
 if(!$resultado){
