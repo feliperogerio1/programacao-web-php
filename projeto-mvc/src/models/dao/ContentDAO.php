@@ -32,10 +32,9 @@ class ContentDAO{
 
     public function insert(Content $content){
         try{
-            $sql = "INSERT INTO content (idcontent, subject_idsubject, name, weight) 
-                VALUES (:idcontent, :subject_idsubject, :name, :weight)";
+            $sql = "INSERT INTO content (subject_idsubject, name, weight) 
+                VALUES (:subject_idsubject, :name, :weight)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idcontent", $content->getId());
             $p->bindValue(":subject_idsubject", $content->getSubject()->getId());
             $p->bindValue(":name", $content->getName());
             $p->bindValue(":weight", $content->getWeight());

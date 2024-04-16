@@ -32,10 +32,9 @@ class ToolDAO{
 
     public function insert(Tool $tool){
         try{
-            $sql = "INSERT INTO tool (idtool, subject_idsubject, name, description) 
-                VALUES (:idtool, :subject_idsubject, :name, :description)";
+            $sql = "INSERT INTO tool (subject_idsubject, name, description) 
+                VALUES (:subject_idsubject, :name, :description)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idtool", $tool->getId());
             $p->bindValue(":subject_idsubject", $tool->getSubject()->getId());
             $p->bindValue(":name", $tool->getName());
             $p->bindValue(":description", $tool->getDescription());

@@ -15,7 +15,7 @@ USE `mydb`;
 -- Table `mydb`.`subject`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`subject` (
-  `idsubject` INT NOT NULL,
+  `idsubject` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `datep1` DATE NOT NULL,
   `datep2` DATE NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`subject` (
 -- Table `mydb`.`content`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`content` (
-  `idcontent` INT NOT NULL,
+  `idcontent` INT NOT NULL AUTO_INCREMENT,
   `subject_idsubject` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `weight` FLOAT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`content` (
 -- Table `mydb`.`session`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`session` (
-  `idsession` INT NOT NULL,
+  `idsession` INT NOT NULL AUTO_INCREMENT,
   `content_idcontent` INT NOT NULL,
   `subject_idsubject` INT NOT NULL,
   `date` DATE NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`session` (
 -- Table `mydb`.`tool`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tool` (
-  `idtool` INT NOT NULL,
+  `idtool` INT NOT NULL AUTO_INCREMENT,
   `subject_idsubject` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(150) NOT NULL,

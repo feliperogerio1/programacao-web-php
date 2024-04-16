@@ -32,10 +32,9 @@ class SessionDAO{
 
     public function insert(Session $session){
         try{
-            $sql = "INSERT INTO session (idsession, content_idcontent, subject_idsubject, date) 
-                VALUES (:idsession, :content_idcontent, :subject_idsubject, :date)";
+            $sql = "INSERT INTO session (content_idcontent, subject_idsubject, date) 
+                VALUES (:content_idcontent, :subject_idsubject, :date)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idsession", $session->getId());
             $p->bindValue(":content_idcontent", $session->getContent()->getId());
             $p->bindValue(":subject_idsubject", $session->getSubject()->getId());
             $p->bindValue(":date", $session->getDate());

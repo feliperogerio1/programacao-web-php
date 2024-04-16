@@ -32,9 +32,8 @@ class SubjectDAO{
 
     public function insert(Subject $subject){
         try{
-            $sql = "INSERT INTO subject (idsubject, name, datep1, datep2) VALUES (:idsubject, :name, :datep1, :datep2)";
+            $sql = "INSERT INTO subject (name, datep1, datep2) VALUES (:name, :datep1, :datep2)";
             $p = $this->conexao->getConexao()->prepare($sql);
-            $p->bindValue(":idsubject", $subject->getId());
             $p->bindValue(":name", $subject->getName());
             $p->bindValue(":datep1", $subject->getDatep1());
             $p->bindValue(":datep2", $subject->getDatep2());
