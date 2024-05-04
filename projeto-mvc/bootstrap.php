@@ -34,9 +34,14 @@ $r->post('/session/edit', 'Php\Projetomvc\Controllers\SessionController@edit');
 $r->get('/session/delete/id/{id}', 'Php\Projetomvc\Controllers\SessionController@delete');
 $r->post('/session/erase', 'Php\Projetomvc\Controllers\SessionController@erase');
 
+$r->get('/tool', 'Php\Projetomvc\Controllers\ToolController@index');
+$r->get('/tool/{acao}/{status}', 'Php\Projetomvc\Controllers\ToolController@index');
 $r->get('/tool/insert', 'Php\Projetomvc\Controllers\ToolController@insert');
-
 $r->post('/tool/new' , 'Php\Projetomvc\Controllers\ToolController@new');
+$r->get('/tool/update/id/{id}', 'Php\Projetomvc\Controllers\ToolController@update');
+$r->post('/tool/edit', 'Php\Projetomvc\Controllers\ToolController@edit');
+$r->get('/tool/delete/id/{id}', 'Php\Projetomvc\Controllers\ToolController@delete');
+$r->post('/tool/erase', 'Php\Projetomvc\Controllers\ToolController@erase');
 
 $resultado = $r->handler();
 
