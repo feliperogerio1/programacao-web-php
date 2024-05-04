@@ -10,16 +10,20 @@ $r = new Php\Projetomvc\Router($metodo, $caminho);
 $r->get('/subject', 'Php\Projetomvc\Controllers\SubjectController@index');
 $r->get('/subject/{acao}/{status}', 'Php\Projetomvc\Controllers\SubjectController@index');
 $r->get('/subject/insert', 'Php\Projetomvc\Controllers\SubjectController@insert');
+$r->post('/subject/new', 'Php\Projetomvc\Controllers\SubjectController@new');
 $r->get('/subject/update/id/{id}', 'Php\Projetomvc\Controllers\SubjectController@update');
-$r->get('/subject/delete/id/{id}', 'Php\Projetomvc\Controllers\SubjectController@delete');
 $r->post('/subject/edit', 'Php\Projetomvc\Controllers\SubjectController@edit');
+$r->get('/subject/delete/id/{id}', 'Php\Projetomvc\Controllers\SubjectController@delete');
 $r->post('/subject/erase', 'Php\Projetomvc\Controllers\SubjectController@erase');
 
-$r->post('/subject/new', 'Php\Projetomvc\Controllers\SubjectController@new');
-
+$r->get('/content', 'Php\Projetomvc\Controllers\ContentController@index');
+$r->get('/content/{acao}/{status}', 'Php\Projetomvc\Controllers\ContentController@index');
 $r->get('/content/insert', 'Php\Projetomvc\Controllers\ContentController@insert');
-
 $r->post('/content/new', 'Php\Projetomvc\Controllers\ContentController@new');
+$r->get('/content/update/id/{id}', 'Php\Projetomvc\Controllers\ContentController@update');
+$r->post('/content/edit', 'Php\Projetomvc\Controllers\ContentController@edit');
+$r->get('/content/delete/id/{id}', 'Php\Projetomvc\Controllers\ContentController@delete');
+$r->post('/content/erase', 'Php\Projetomvc\Controllers\ContentController@erase');
 
 $r->get('/session/insert', 'Php\Projetomvc\Controllers\SessionController@insert');
 
