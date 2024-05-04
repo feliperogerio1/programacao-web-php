@@ -13,9 +13,7 @@ class SubjectDAO{
 
     public function getAll(){
         $sql = "SELECT * from subject";
-        $p = $this->conexao->getConexao()->prepare($sql);
-        $p->execute();
-        return $p->fetchAll();
+        return $this->conexao->getConexao()->query($sql);
     }
 
     public function getById($id){
@@ -37,6 +35,35 @@ class SubjectDAO{
             $p->bindValue(":name", $subject->getName());
             $p->bindValue(":datep1", $subject->getDatep1());
             $p->bindValue(":datep2", $subject->getDatep2());
+            return $p->execute();
+        } catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function update(Subject $subject){
+        try{
+            $sql = "UPDATE subject 
+                    SET name = :name,
+                    datep1 = :datep1,
+                    datep2 = :datep2
+                    WHERE idsubject = :id";
+            $p = $this->conexao->getConexao()->prepare($sql);
+            $p->bindValue(":name", $subject->getName());
+            $p->bindValue(":datep1", $subject->getDatep1());
+            $p->bindValue(":datep2", $subject->getDatep2());
+            $p->bindValue(":id", $subject->getId());
+            return $p->execute();
+        } catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function delete($id){
+        try{
+            $sql = "DELETE FROM subject WHERE idsubject = :id";
+            $p = $this->conexao->getConexao()->prepare($sql);
+            $p->bindValue(":id", $id);
             return $p->execute();
         } catch(\Exception $e){
             return 0;

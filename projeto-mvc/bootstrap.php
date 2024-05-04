@@ -7,7 +7,13 @@ $caminho = $_SERVER['PATH_INFO'] ?? '/';
 
 $r = new Php\Projetomvc\Router($metodo, $caminho);
 
+$r->get('/subject', 'Php\Projetomvc\Controllers\SubjectController@index');
+$r->get('/subject/{acao}/{status}', 'Php\Projetomvc\Controllers\SubjectController@index');
 $r->get('/subject/insert', 'Php\Projetomvc\Controllers\SubjectController@insert');
+$r->get('/subject/update/id/{id}', 'Php\Projetomvc\Controllers\SubjectController@update');
+$r->get('/subject/delete/id/{id}', 'Php\Projetomvc\Controllers\SubjectController@delete');
+$r->post('/subject/edit', 'Php\Projetomvc\Controllers\SubjectController@edit');
+$r->post('/subject/erase', 'Php\Projetomvc\Controllers\SubjectController@erase');
 
 $r->post('/subject/new', 'Php\Projetomvc\Controllers\SubjectController@new');
 
