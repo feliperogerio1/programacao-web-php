@@ -13,9 +13,7 @@ class SessionDAO{
 
     public function getAll(){
         $sql = "SELECT * from session";
-        $p = $this->conexao->getConexao()->prepare($sql);
-        $p->execute();
-        return $p->fetchAll();
+        return $this->conexao->getConexao()->query($sql);
     }
 
     public function getById($id){
@@ -25,6 +23,20 @@ class SessionDAO{
             $p->bindValue(":id", $id);
             $p->execute();
             return $p->fetch();
+        } catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function getAllWithSubjectContentName(){
+        try{
+            $sql = "SELECT se.idsession, c.name as contentname, su.name as subjectname, se.date 
+                    from session se
+                    INNER JOIN content c
+                    on se.content_idcontent = c.idcontent
+                    INNER JOIN subject su
+                    on se.subject_idsubject = su.idsubject";
+            return $this->conexao->getConexao()->query($sql);
         } catch(\Exception $e){
             return 0;
         }
@@ -41,6 +53,36 @@ class SessionDAO{
             return $p->execute();
         } catch(\Exception $e){
             return $e->getMessage();
+        }
+    }
+
+    public function update(Session $session){
+        try{
+            $sql = "UPDATE session
+                    set content_idcontent = :content_idcontent,
+                    subject_idsubject = :subject_idsubject,
+                    date = :date
+                    where idsession = :id";
+            $p = $this->conexao->getConexao()->prepare($sql);
+            $p->bindValue(":content_idcontent", $session->getContent()->getId());
+            $p->bindValue(":subject_idsubject", $session->getSubject()->getId());
+            $p->bindValue(":date", $session->getDate());
+            $p->bindValue(":id", $session->getId());
+            return $p->execute();
+        } catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function delete($id){
+        try{
+            $sql = "DELETE from session
+                    where idsession = :id";
+            $p = $this->conexao->getConexao()->prepare($sql);
+            $p->bindValue(":id", $id);
+            return $p->execute();
+        } catch(\Exception $e){
+            return 0;
         }
     }
 }

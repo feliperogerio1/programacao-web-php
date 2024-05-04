@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Conteúdos</title>
+        <title>Sessões</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css">
     </head>
     <body>
         <main class="container">
-            <h1>Conteúdos</h1>
-            <a href="/content/insert" class="btn btn-primary">Novo conteúdo</a>
+            <h1>Sessões</h1>
+            <a href="/session/insert" class="btn btn-primary">Nova sessão</a>
             <?php if(isset($_GET)){?>
                 <div class="alert alert-<?= $color ?> alert-dismissible fade show" role="alert">
                     <?= $mensagem ?>
@@ -21,9 +21,9 @@
             <table id="tabela" class="table table-stripped table-hover">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Peso</th>
+                        <th>Conteúdo</th>
                         <th>Matéria</th>
+                        <th>Data</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -33,11 +33,11 @@
                     ?>
                         <tr>
                             <td><?= $s['contentname']?></td>
-                            <td><?= $s['weight']?></td>
                             <td><?= $s['subjectname']?></td>
+                            <td><?= $s['date']?></td>
                             <td>
-                                <a href='/content/update/id/<?= $s['idcontent']?>' class="btn btn-warning">Alterar</a>
-                                <a href='/content/delete/id/<?= $s['idcontent']?>' class="btn btn-danger">Excluir</a>
+                                <a href='/session/update/id/<?= $s['idsession']?>' class="btn btn-warning">Alterar</a>
+                                <a href='/session/delete/id/<?= $s['idsession']?>' class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
                         <?php

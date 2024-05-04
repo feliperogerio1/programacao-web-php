@@ -25,9 +25,14 @@ $r->post('/content/edit', 'Php\Projetomvc\Controllers\ContentController@edit');
 $r->get('/content/delete/id/{id}', 'Php\Projetomvc\Controllers\ContentController@delete');
 $r->post('/content/erase', 'Php\Projetomvc\Controllers\ContentController@erase');
 
+$r->get('/session', 'Php\Projetomvc\Controllers\SessionController@index');
+$r->get('/session/{acao}/{status}', 'Php\Projetomvc\Controllers\SessionController@index');
 $r->get('/session/insert', 'Php\Projetomvc\Controllers\SessionController@insert');
-
 $r->post('/session/new', 'Php\Projetomvc\Controllers\SessionController@new');
+$r->get('/session/update/id/{id}', 'Php\Projetomvc\Controllers\SessionController@update');
+$r->post('/session/edit', 'Php\Projetomvc\Controllers\SessionController@edit');
+$r->get('/session/delete/id/{id}', 'Php\Projetomvc\Controllers\SessionController@delete');
+$r->post('/session/erase', 'Php\Projetomvc\Controllers\SessionController@erase');
 
 $r->get('/tool/insert', 'Php\Projetomvc\Controllers\ToolController@insert');
 
